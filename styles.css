@@ -1,0 +1,1843 @@
+/* ============================================================
+   SALUD A DOMICILIO
+   Hoja de estilos principal
+
+   Cómo está organizada:
+   1. Variables y estilos generales
+   2. Utilidades (contenedor, botones, listas, avisos)
+   3. Encabezado y menú
+   4. Botones flotantes de contacto
+   5. Portada (hero)
+   6. Contacto rápido
+   7. Tarjetas de servicios
+   8. Pasos y bloques en dos columnas
+   9. Testimonios y preguntas frecuentes
+   10. Página de servicios
+   11. Página nosotros
+   12. Página de contacto
+   13. Llamada final a la acción
+   14. Pie de página
+   15. Adaptación a tablets y celulares
+
+   Para cambiar la identidad visual del sitio, editá las
+   variables de la sección 1.
+   ============================================================ */
+
+
+/* ---------- 1. VARIABLES Y ESTILOS GENERALES ---------- */
+
+/* PISTA: este bloque es el "tablero de control" del sitio. Cambiá un valor
+   acá y se actualiza en todas las páginas. */
+:root {
+  /* PISTA: --teal es el color principal; --teal-dark se usa en títulos y
+     secciones oscuras; --cream y --mint son fondos; --amber, en detalles.
+     Probá una paleta nueva completa antes de tocar el resto del CSS. */
+  /* Paleta principal */
+  --teal: #1B76B4;
+  --teal-dark: #0C3B5E;
+  --teal-soft: #D9EAF7;
+  --mint: #EDF5FC;
+  --cream: #FBF9F4;
+  --sand: #F4EEE3;
+  --amber: #F0B429;
+  --amber-soft: #FDF3D9;
+  --amber-dark: #6B4A00;
+  --whatsapp: #0F7D43;
+  --whatsapp-dark: #0A5C31;
+  --ink: #152421;
+  --muted: #536763;
+  --line: #DBE6E1;
+  --white: #FFFFFF;
+
+  /* PISTA: --container define el ancho máximo del contenido, --header-height
+     la altura de la barra fija y --radius los bordes redondeados.
+     Las sombras usan el mismo tono azul oscuro con distintas opacidades. */
+  /* Medidas y efectos */
+  --container: 1160px;
+  --header-height: 78px;
+  --radius: 22px;
+  --radius-sm: 14px;
+  --shadow: 0 18px 44px rgba(7, 59, 55, 0.12);
+  --shadow-soft: 0 10px 28px rgba(7, 59, 55, 0.07);
+  --transition: 0.25s ease;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--cream);
+  color: var(--ink);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-top: 0;
+  color: var(--teal-dark);
+  font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+}
+
+/* PISTA: los tamaños usan clamp(mínimo, tamaño flexible, máximo).
+   Si cambiás la tipografía, revisá estos valores para que no se corte. */
+h1 {
+  font-size: clamp(2.6rem, 5.4vw, 4.35rem);
+  line-height: 1.05;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  font-size: clamp(2rem, 3.6vw, 2.9rem);
+}
+
+h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.35rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+ul,
+ol {
+  margin-top: 0;
+}
+
+::selection {
+  background-color: var(--amber);
+  color: var(--teal-dark);
+}
+
+:focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: 3px;
+}
+
+section[id] {
+  scroll-margin-top: calc(var(--header-height) + 20px);
+}
+
+/* Respeta la preferencia de reducir animaciones */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+
+/* ---------- 2. UTILIDADES ---------- */
+
+/* PISTA: el contenedor centra el contenido. El 2.5rem es el margen lateral
+   en escritorio; en celular se reduce más abajo, en la sección 15. */
+.container {
+  width: min(100% - 2.5rem, var(--container));
+  margin-inline: auto;
+}
+
+/* PISTA: el espaciado vertical de las secciones se adapta al ancho de la
+   pantalla. Si querés un sitio más compacto, bajá estos valores. */
+.section {
+  padding-block: clamp(3.5rem, 7vw, 6rem);
+}
+
+.section--mint {
+  background-color: var(--mint);
+}
+
+.section--sand {
+  background-color: var(--sand);
+}
+
+.section--tight {
+  padding-block: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.section-head {
+  max-width: 680px;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.section-head--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.section-head h2 {
+  margin-bottom: 0.8rem;
+}
+
+.section-head p {
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.9rem;
+  color: var(--teal);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 34px;
+  height: 2px;
+  background-color: var(--amber);
+  border-radius: 2px;
+}
+
+.section-head--center .eyebrow {
+  justify-content: center;
+}
+
+.lead {
+  color: var(--muted);
+  font-size: clamp(1.02rem, 1.4vw, 1.14rem);
+  line-height: 1.75;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: auto;
+  padding-top: 1.25rem;
+  color: var(--teal);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.text-link::after {
+  content: "\2192";
+  transition: transform var(--transition);
+}
+
+.text-link:hover::after {
+  transform: translateX(4px);
+}
+
+/* PISTA: para botones rectangulares, cambiá border-radius: 999px por 10px.
+   Los colores de cada variante (whatsapp, outline, light) están debajo. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.9rem 1.45rem;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  font-family: "Manrope", system-ui, sans-serif;
+  font-size: 0.94rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform var(--transition), background-color var(--transition),
+    border-color var(--transition), color var(--transition);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn--primary {
+  background-color: var(--teal);
+  color: var(--white);
+}
+
+.btn--primary:hover {
+  background-color: var(--teal-dark);
+}
+
+.btn--whatsapp {
+  background-color: var(--whatsapp);
+  color: var(--white);
+}
+
+.btn--whatsapp:hover {
+  background-color: var(--whatsapp-dark);
+}
+
+.btn--outline {
+  border-color: var(--teal);
+  background-color: transparent;
+  color: var(--teal-dark);
+}
+
+.btn--outline:hover {
+  background-color: var(--teal);
+  color: var(--white);
+}
+
+.btn--light {
+  background-color: var(--white);
+  color: var(--teal-dark);
+}
+
+.btn--light:hover {
+  background-color: var(--teal-soft);
+}
+
+.btn--sm {
+  padding: 0.65rem 1rem;
+  font-size: 0.86rem;
+}
+
+.btn--lg {
+  padding: 1rem 1.65rem;
+  font-size: 1rem;
+}
+
+.btn--block {
+  width: 100%;
+}
+
+.icon {
+  width: 1.2em;
+  height: 1.2em;
+  flex: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 1rem;
+  z-index: 999;
+  padding: 0.75rem 1rem;
+  border-radius: 0 0 12px 12px;
+  background-color: var(--teal-dark);
+  color: var(--white);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+.emergency-bar {
+  margin: 0;
+  padding: 0.55rem 1rem;
+  border-bottom: 1px solid #F1DFAF;
+  background-color: var(--amber-soft);
+  color: var(--amber-dark);
+  font-size: 0.84rem;
+  text-align: center;
+}
+
+.emergency-bar strong {
+  font-weight: 800;
+}
+
+.check-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin: 1.25rem 0 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.check-list li {
+  position: relative;
+  padding-left: 1.85rem;
+  font-size: 0.95rem;
+}
+
+.check-list li::before {
+  content: "\2713";
+  position: absolute;
+  top: 0.15rem;
+  left: 0;
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 50%;
+  background-color: var(--teal-soft);
+  color: var(--teal-dark);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.3rem;
+  text-align: center;
+}
+
+.note {
+  padding: 1rem 1.15rem;
+  border: 1px solid #F1DFAF;
+  border-left: 4px solid var(--amber);
+  border-radius: var(--radius-sm);
+  background-color: var(--amber-soft);
+  color: var(--amber-dark);
+  font-size: 0.93rem;
+}
+
+.note p {
+  margin: 0;
+}
+
+.mt-2 {
+  margin-top: 2rem;
+}
+
+.subhead {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 1.5rem;
+  font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+}
+
+.pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 1.5rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pill-list li {
+  padding: 0.42rem 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background-color: var(--white);
+  color: var(--teal-dark);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+
+/* ---------- 3. ENCABEZADO Y MENÚ ---------- */
+
+/* PISTA: position: sticky mantiene el menú arriba al hacer scroll. Si lo
+   cambiás a static, el menú deja de acompañar la navegación. */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--line);
+  background-color: rgba(255, 255, 255, 0.98);
+}
+
+.header-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+  min-height: var(--header-height);
+  padding-block: 0.55rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  order: 1;
+  margin-right: auto;
+  text-decoration: none;
+}
+
+.brand__mark {
+  width: 44px;
+  height: 44px;
+  flex: none;
+}
+
+.brand__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brand__text strong {
+  color: var(--teal-dark);
+  font-family: "Manrope", system-ui, sans-serif;
+  font-size: 1.03rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.brand__text span {
+  margin-top: 0.22rem;
+  color: var(--muted);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.nav-toggle {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  clip-path: inset(50%);
+  overflow: hidden;
+}
+
+.nav-toggle-label,
+.header-call {
+  display: none;
+}
+
+.nav-panel {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  order: 2;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-list a {
+  display: inline-block;
+  padding-block: 0.35rem;
+  border-bottom: 2px solid transparent;
+  color: var(--ink);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav-list a:hover {
+  color: var(--teal);
+  border-bottom-color: var(--teal-soft);
+}
+
+.nav-list a[aria-current="page"] {
+  color: var(--teal);
+  border-bottom-color: var(--teal);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.nav-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--teal-dark);
+  font-size: 0.89rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav-phone .icon {
+  color: var(--teal);
+}
+
+
+/* ---------- 4. BOTONES FLOTANTES DE CONTACTO ---------- */
+
+.floating-contact {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 95;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.float-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.95rem 0.45rem 0.45rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background-color: var(--white);
+  box-shadow: 0 12px 28px rgba(7, 59, 55, 0.22);
+  font-family: "Manrope", system-ui, sans-serif;
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform var(--transition), background-color var(--transition);
+}
+
+.float-btn:hover {
+  transform: translateY(-2px);
+}
+
+.float-btn--whatsapp {
+  background-color: var(--whatsapp);
+  color: var(--white);
+}
+
+.float-btn--whatsapp:hover {
+  background-color: var(--whatsapp-dark);
+}
+
+.float-btn--phone {
+  border-color: var(--line);
+  color: var(--teal-dark);
+}
+
+.float-btn__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.18);
+}
+
+.float-btn--phone .float-btn__icon {
+  background-color: var(--mint);
+  color: var(--teal);
+}
+
+.float-btn__icon .icon {
+  width: 18px;
+  height: 18px;
+}
+
+
+/* ---------- 5. PORTADA ---------- */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(2.75rem, 6vw, 5rem);
+  background-color: var(--cream);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -180px;
+  right: -180px;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background-color: var(--mint);
+}
+
+.hero__grid {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.hero__content {
+  flex: 1 1 450px;
+}
+
+.hero__title {
+  margin-bottom: 1.15rem;
+}
+
+.hero__title .highlight {
+  color: var(--teal);
+}
+
+.hero__lead {
+  max-width: 540px;
+  color: var(--muted);
+  font-size: clamp(1.03rem, 1.5vw, 1.16rem);
+  line-height: 1.75;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.75rem;
+}
+
+.hero__trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.3rem;
+  margin: 1.9rem 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.hero__trust li {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.hero__trust li::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--amber);
+}
+
+.hero__media {
+  position: relative;
+  flex: 1 1 360px;
+  max-width: 470px;
+  margin-left: auto;
+}
+
+/* PISTA: aspect-ratio recorta la foto de portada sin deformarla. Probá 4/3
+   o 1/1; si cambiás la proporción, revisá también el @media de 700px. */
+.hero__media img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 28px;
+  object-fit: cover;
+  box-shadow: var(--shadow);
+}
+
+.hero__badge {
+  position: absolute;
+  bottom: 1.15rem;
+  left: 1.15rem;
+  right: 1.15rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.8rem 0.95rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--white);
+  box-shadow: 0 12px 30px rgba(7, 59, 55, 0.16);
+}
+
+.hero__badge-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex: none;
+  border-radius: 50%;
+  background-color: var(--teal-soft);
+  color: var(--teal-dark);
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.hero__badge strong {
+  display: block;
+  color: var(--teal-dark);
+  font-size: 0.86rem;
+  line-height: 1.25;
+}
+
+.hero__badge span:last-child {
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.3;
+}
+
+
+/* ---------- 6. CONTACTO RÁPIDO ---------- */
+
+.quick-contact {
+  border-block: 1px solid var(--line);
+  background-color: var(--white);
+}
+
+.quick-contact__grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.quick-card {
+  display: flex;
+  flex: 1 1 260px;
+  align-items: flex-start;
+  gap: 0.9rem;
+  padding: 1.4rem 1.6rem;
+  border-right: 1px solid var(--line);
+  text-decoration: none;
+  transition: background-color var(--transition);
+}
+
+.quick-card:last-child {
+  border-right: 0;
+}
+
+a.quick-card:hover {
+  background-color: var(--mint);
+}
+
+.quick-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  flex: none;
+  border-radius: 12px;
+  background-color: var(--mint);
+  color: var(--teal);
+}
+
+.quick-card__icon .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.quick-card__label {
+  display: block;
+  margin-bottom: 0.1rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.quick-card__value {
+  display: block;
+  color: var(--teal-dark);
+  font-family: "Manrope", system-ui, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.quick-card__text {
+  display: block;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+
+/* ---------- 7. TARJETAS DE SERVICIOS ---------- */
+
+.service-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+/* PISTA: flex-basis indica el ancho ideal de cada tarjeta. Con 420px entran
+   dos en escritorio y una en celular. Si agregás una tercera, se acomoda sola. */
+.service-card {
+  display: flex;
+  flex: 1 1 420px;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background-color: var(--white);
+  box-shadow: var(--shadow-soft);
+}
+
+.service-card__media img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.service-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: clamp(1.35rem, 3vw, 1.9rem);
+}
+
+.service-card__tag {
+  margin-bottom: 0.55rem;
+  color: var(--teal);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.service-card h3 {
+  font-size: 1.5rem;
+}
+
+.service-card p {
+  color: var(--muted);
+}
+
+
+/* ---------- 8. PASOS Y BLOQUES EN DOS COLUMNAS ---------- */
+
+.steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.step {
+  flex: 1 1 255px;
+  padding: 1.6rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.step__number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 0.95rem;
+  border-radius: 50%;
+  background-color: var(--teal);
+  color: var(--white);
+  font-family: "Manrope", system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.step h3 {
+  font-size: 1.18rem;
+}
+
+.step p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.split {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.split__media {
+  flex: 1 1 380px;
+}
+
+.split__media img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius);
+  object-fit: cover;
+  box-shadow: var(--shadow);
+}
+
+.split__content {
+  flex: 1 1 400px;
+}
+
+.split--reverse .split__media {
+  order: 2;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding-block: 2rem;
+  border-block: 1px solid var(--line);
+}
+
+.stat {
+  flex: 1 1 180px;
+  text-align: center;
+}
+
+.stat__number {
+  display: block;
+  color: var(--teal);
+  font-family: "Manrope", system-ui, sans-serif;
+  font-size: clamp(2.2rem, 4vw, 3.1rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.stat__label {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.values {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.value-card {
+  flex: 1 1 235px;
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background-color: var(--white);
+}
+
+.value-card h3 {
+  font-size: 1.12rem;
+}
+
+.value-card p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+
+/* ---------- 9. TESTIMONIOS Y PREGUNTAS FRECUENTES ---------- */
+
+.testimonials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.testimonial {
+  display: flex;
+  flex: 1 1 300px;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: 1.6rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background-color: var(--white);
+}
+
+.stars {
+  color: var(--amber);
+  font-size: 1rem;
+  letter-spacing: 0.18em;
+  line-height: 1;
+}
+
+.testimonial__quote {
+  margin: 0;
+  color: var(--ink);
+  font-size: 0.97rem;
+}
+
+.testimonial__author {
+  margin-top: auto;
+  color: var(--teal-dark);
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.testimonial__author span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 400;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  max-width: 850px;
+}
+
+.faq-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+/* PISTA: el borde izquierdo azul distingue cada pregunta. Podés cambiarlo
+   por un fondo suave o por una sombra, manteniendo el mismo padding. */
+.faq-card {
+  flex: 1 1 360px;
+  padding: 1.25rem 1.4rem;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--teal);
+  border-radius: var(--radius-sm);
+  background-color: var(--white);
+}
+
+.faq-card h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.06rem;
+}
+
+.faq-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.faq-group {
+  margin-bottom: 2.25rem;
+}
+
+.faq-group:last-child {
+  margin-bottom: 0;
+}
+
+.faq-group__title {
+  margin-bottom: 1rem;
+  color: var(--teal);
+  font-family: "Manrope", system-ui, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+
+/* ---------- 10. PÁGINA DE SERVICIOS ---------- */
+
+.page-hero {
+  padding-block: clamp(2.75rem, 5vw, 4.5rem);
+  border-bottom: 1px solid var(--line);
+  background-color: var(--mint);
+}
+
+.page-hero__inner {
+  max-width: 780px;
+}
+
+.page-hero h1 {
+  margin-bottom: 1rem;
+  font-size: clamp(2.25rem, 4.6vw, 3.55rem);
+}
+
+.page-hero p {
+  max-width: 640px;
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 1.06rem;
+}
+
+.service-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.service-item {
+  flex: 1 1 300px;
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background-color: var(--white);
+}
+
+.service-item__number {
+  display: block;
+  margin-bottom: 0.55rem;
+  color: #A06E00;
+  font-family: "Manrope", system-ui, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.service-item h3 {
+  font-size: 1.13rem;
+}
+
+.service-item p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.cta-inline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+
+/* ---------- 11. PÁGINA NOSOTROS ---------- */
+
+.signature {
+  margin-top: 1.5rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--amber);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.signature strong {
+  display: block;
+  color: var(--teal-dark);
+  font-family: "Manrope", system-ui, sans-serif;
+  font-size: 1rem;
+}
+
+.commitment {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.commitment__item {
+  flex: 1 1 300px;
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background-color: var(--white);
+}
+
+.commitment__item h3 {
+  font-size: 1.12rem;
+}
+
+.commitment__item p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+
+/* ---------- 12. PÁGINA DE CONTACTO ---------- */
+
+.contact-layout {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.contact-cards {
+  display: flex;
+  flex: 1 1 540px;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.contact-card {
+  display: flex;
+  flex: 1 1 245px;
+  flex-direction: column;
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background-color: var(--white);
+  text-decoration: none;
+  transition: transform var(--transition), border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+a.contact-card:hover {
+  border-color: var(--teal);
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-2px);
+}
+
+.contact-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 1rem;
+  border-radius: 13px;
+  background-color: var(--mint);
+  color: var(--teal);
+}
+
+.contact-card__icon .icon {
+  width: 22px;
+  height: 22px;
+}
+
+.contact-card__label {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.contact-card__value {
+  margin: 0.15rem 0 0.3rem;
+  color: var(--teal-dark);
+  font-family: "Manrope", system-ui, sans-serif;
+  font-size: 1.22rem;
+  font-weight: 800;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.contact-card__text {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+/* PISTA: este panel usa el azul oscuro para contrastar con las tarjetas
+   blancas. Si lo hacés claro, revisá el color del texto y de los botones. */
+.contact-panel {
+  flex: 1 1 340px;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  border-radius: var(--radius);
+  background-color: var(--teal-dark);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.contact-panel h2 {
+  color: var(--white);
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+}
+
+.contact-panel p {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.contact-panel .check-list li {
+  color: var(--white);
+}
+
+.contact-panel .check-list li::before {
+  background-color: rgba(255, 255, 255, 0.16);
+  color: var(--white);
+}
+
+.contact-panel .btn {
+  margin-top: 0.35rem;
+}
+
+.contact-panel .btn--light {
+  margin-top: 1.25rem;
+}
+
+.emergency-box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.35rem 1.5rem;
+  border: 1px solid #F1DFAF;
+  border-radius: var(--radius);
+  background-color: var(--amber-soft);
+}
+
+.emergency-box p {
+  margin: 0;
+  color: var(--amber-dark);
+  font-size: 0.94rem;
+}
+
+.emergency-box strong {
+  color: var(--amber-dark);
+}
+
+
+/* ---------- 13. LLAMADA FINAL A LA ACCIÓN ---------- */
+
+.cta-band {
+  background-color: var(--teal-dark);
+  color: var(--white);
+}
+
+.cta-band__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.cta-band__content {
+  flex: 1 1 420px;
+}
+
+.cta-band .eyebrow {
+  color: var(--teal-soft);
+}
+
+.cta-band h2 {
+  margin-bottom: 0.65rem;
+  color: var(--white);
+}
+
+.cta-band p {
+  max-width: 560px;
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.cta-band__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+
+/* ---------- 14. PIE DE PÁGINA ---------- */
+
+/* PISTA: padding-bottom deja espacio para que los botones flotantes no
+   tapen el último contenido del pie. Si los ocultás, podés reducirlo. */
+.site-footer {
+  padding-bottom: 5rem;
+  background-color: var(--teal-dark);
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.footer-main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  padding-block: clamp(3rem, 6vw, 4.5rem) 2rem;
+}
+
+.footer-about {
+  flex: 1 1 290px;
+  max-width: 340px;
+}
+
+.footer-about > p {
+  margin-top: 1.2rem;
+  font-size: 0.92rem;
+}
+
+.footer-emergency {
+  padding: 0.8rem 1rem;
+  border-left: 3px solid var(--amber);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background-color: rgba(255, 255, 255, 0.07);
+  color: var(--white);
+  font-size: 0.86rem;
+}
+
+.footer-emergency strong {
+  color: var(--amber);
+}
+
+.brand--footer .brand__text strong {
+  color: var(--white);
+  font-size: 1.08rem;
+}
+
+.brand--footer .brand__text span {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.footer-col {
+  flex: 1 1 145px;
+}
+
+.footer-contact {
+  flex: 1 1 250px;
+}
+
+.footer-title {
+  margin-bottom: 0.95rem;
+  color: var(--white);
+  font-family: "Manrope", system-ui, sans-serif;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.footer-col ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-col a {
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.footer-col a:hover {
+  color: var(--white);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer-phone {
+  display: block;
+  margin-bottom: 0.8rem;
+  color: var(--white);
+  font-family: "Manrope", system-ui, sans-serif;
+  font-size: 1.65rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.footer-contact .btn {
+  margin-bottom: 0.95rem;
+}
+
+.footer-contact p {
+  margin-bottom: 0.45rem;
+  font-size: 0.88rem;
+}
+
+.footer-mail {
+  color: var(--white);
+  font-size: 0.88rem;
+  text-underline-offset: 3px;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  font-size: 0.78rem;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+
+/* ---------- 15. ADAPTACIÓN A TABLETS Y CELULARES ----------
+   PISTA: los @media aplican estilos solo por debajo de cierto ancho.
+   1080px activa el menú hamburguesa; 700px y 480px ajustan celulares.
+   Podés cambiar los cortes, pero probá el sitio en varios tamaños. */
+
+/* Menú hamburguesa y encabezado compacto */
+/* PISTA: acá el menú horizontal se convierte en hamburguesa. Si tu menú
+   tiene más enlaces, este es el bloque donde se apilan. */
+@media (max-width: 1080px) {
+  .header-bar {
+    gap: 0.55rem;
+  }
+
+  .header-call {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    order: 3;
+    width: 44px;
+    height: 44px;
+    flex: none;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background-color: var(--mint);
+    color: var(--teal);
+    text-decoration: none;
+  }
+
+  .nav-toggle-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    order: 4;
+    width: 44px;
+    height: 44px;
+    flex: none;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background-color: var(--white);
+    cursor: pointer;
+  }
+
+  .nav-toggle-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 24px;
+  }
+
+  .nav-toggle-bars span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    border-radius: 2px;
+    background-color: var(--teal-dark);
+    transition: transform var(--transition), opacity var(--transition);
+  }
+
+  .nav-toggle:checked + .nav-toggle-label .nav-toggle-bars span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .nav-toggle:checked + .nav-toggle-label .nav-toggle-bars span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-toggle:checked + .nav-toggle-label .nav-toggle-bars span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .nav-toggle:focus-visible + .nav-toggle-label {
+    outline: 3px solid var(--amber);
+    outline-offset: 3px;
+  }
+
+  .nav-panel {
+    position: absolute;
+    top: 100%;
+    left: calc(50% - 50vw);
+    display: none;
+    width: 100vw;
+    max-height: calc(100vh - var(--header-height));
+    margin: 0;
+    padding: 0.75rem 1.25rem 1.5rem;
+    overflow-y: auto;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background-color: var(--white);
+    box-shadow: 0 24px 40px rgba(7, 59, 55, 0.14);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .nav-toggle:checked ~ .nav-panel {
+    display: flex;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .nav-list li {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-list li:last-child {
+    border-bottom: 0;
+  }
+
+  .nav-list a {
+    display: block;
+    padding-block: 0.9rem;
+    border-bottom: 0;
+    font-size: 1rem;
+  }
+
+  .nav-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.6rem;
+  }
+
+  .nav-phone {
+    justify-content: center;
+    padding: 0.7rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+  }
+
+  .nav-actions .btn {
+    width: 100%;
+  }
+}
+
+/* Ajustes generales para pantallas medianas */
+@media (max-width: 900px) {
+  .hero__media {
+    max-width: 560px;
+    margin-inline: auto;
+  }
+
+  .hero__content {
+    flex-basis: 100%;
+  }
+
+  .footer-about {
+    flex-basis: 100%;
+    max-width: none;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+  }
+}
+
+/* Celulares */
+@media (max-width: 700px) {
+  :root {
+    --header-height: 72px;
+  }
+
+  .container {
+    width: min(100% - 1.75rem, var(--container));
+  }
+
+  .brand__text strong {
+    font-size: 0.96rem;
+  }
+
+  .brand__text span {
+    font-size: 0.6rem;
+  }
+
+  .hero {
+    padding-block: 2.25rem 2.75rem;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+  }
+
+  .hero__trust {
+    gap: 0.5rem 1rem;
+  }
+
+  .hero__media img {
+    aspect-ratio: 1 / 1;
+  }
+
+  .quick-card {
+    flex-basis: 100%;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .quick-card:last-child {
+    border-bottom: 0;
+  }
+
+  .split--reverse .split__media {
+    order: 0;
+  }
+
+  .cta-band__inner {
+    align-items: flex-start;
+  }
+
+  .cta-band__actions,
+  .cta-inline {
+    width: 100%;
+  }
+
+  .cta-band__actions .btn,
+  .cta-inline .btn {
+    width: 100%;
+  }
+
+  .contact-panel {
+    flex-basis: 100%;
+  }
+
+  .footer-main {
+    gap: 2rem;
+  }
+
+  .footer-col {
+    flex-basis: 40%;
+  }
+
+  .footer-contact {
+    flex-basis: 100%;
+  }
+}
+
+/* PISTA: en pantallas muy angostas los botones flotantes quedan solo con
+   ícono y el logo pierde la bajada. Es el último ajuste del responsive. */
+@media (max-width: 480px) {
+  .brand__text span {
+    display: none;
+  }
+
+  .float-btn {
+    width: 50px;
+    height: 50px;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .float-btn__text {
+    display: none;
+  }
+
+  .float-btn__icon {
+    background-color: transparent;
+  }
+
+  .float-btn--phone .float-btn__icon {
+    background-color: transparent;
+  }
+
+  .floating-contact {
+    right: 0.85rem;
+    bottom: 0.85rem;
+  }
+
+  .page-hero,
+  .section {
+    padding-block: 2.75rem;
+  }
+
+  .footer-col {
+    flex-basis: 100%;
+  }
+}

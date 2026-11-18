@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Salud a Domicilio">
+  <rect width="64" height="64" rx="15" fill="#1B76B4"/>
+  <path d="M14 31 32 15l18 16" fill="none" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M19.5 29.5V49h25V29.5" fill="none" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M32 32.5v12M26 38.5h12" fill="none" stroke="#F0B429" stroke-width="4.5" stroke-linecap="round"/>
+</svg>

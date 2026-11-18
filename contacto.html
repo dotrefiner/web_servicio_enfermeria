@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contactá a Salud a Domicilio por teléfono o WhatsApp. Enfermería a domicilio y traslados en ambulancia en CABA y GBA Norte.">
+  <meta name="theme-color" content="#1B76B4">
+  <title>Contacto | Salud a Domicilio</title>
+
+  <!-- PISTA: el <title> y la meta description de arriba son los que se ven en la
+       pestaña y en Google. Conviene adaptarlos en cada página. -->
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container header-bar">
+
+      <!-- PISTA: cambiá el nombre y la bajada de la marca. Repetilos igual en el pie.
+           El logo es assets/logo.svg: podés reemplazarlo por otro archivo. -->
+      <a class="brand" href="index.html">
+        <img class="brand__mark" src="assets/logo.svg" width="44" height="44" alt="">
+        <span class="brand__text">
+          <strong>Salud a Domicilio</strong>
+          <span>Enfermería y traslados</span>
+        </span>
+      </a>
+
+      <input class="nav-toggle" type="checkbox" id="menu-toggle">
+      <label class="nav-toggle-label" for="menu-toggle">
+        <span class="visually-hidden">Abrir o cerrar el menú</span>
+        <span class="nav-toggle-bars" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </label>
+
+      <nav class="nav-panel" aria-label="Menú principal">
+        <!-- PISTA: para sumar o quitar páginas, editá estos <li>. El atributo
+             aria-current="page" marca la página activa y se cambia en cada archivo. -->
+        <ul class="nav-list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
+          <li><a href="contacto.html" aria-current="page">Contacto</a></li>
+        </ul>
+
+        <!-- REEMPLAZAR: teléfono y WhatsApp de ejemplo.
+             En WhatsApp el número va sin +, sin espacios y sin guiones (formato wa.me).
+             El texto después de ?text= es el mensaje que aparece ya escrito en el chat. -->
+        <div class="nav-actions">
+          <a class="nav-phone" href="tel:+5491155555555">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/>
+            </svg>
+            <span>11 5555-5555</span>
+          </a>
+          <a class="btn btn--whatsapp btn--sm" href="https://wa.me/5491155555555?text=Hola%2C%20quisiera%20consultar%20por%20los%20servicios%20de%20Salud%20a%20Domicilio.">WhatsApp</a>
+        </div>
+      </nav>
+
+      <a class="header-call" href="tel:+5491155555555" aria-label="Llamar al 11 5555-5555">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/>
+        </svg>
+      </a>
+
+    </div>
+  </header>
+
+  <!-- PISTA: si el sitio no es de Argentina, cambiá el 107 por el número local
+       de emergencias. También aparece en el pie y en las páginas de servicios y contacto. -->
+  <p class="emergency-bar"><strong>Emergencias:</strong> llamá al 107. Este sitio coordina servicios programados.</p>
+
+  <main id="contenido" tabindex="-1">
+
+    <!-- PISTA: la portada de contacto puede incluir el horario real o un
+         mensaje sobre el tiempo de respuesta. -->
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="container page-hero__inner">
+        <p class="eyebrow">Contacto</p>
+        <h1 id="page-title">Hablemos</h1>
+        <p>
+          La forma más rápida de coordinar es por teléfono o WhatsApp. Contanos qué
+          necesitás y te respondemos de 8 a 20 h, todos los días.
+        </p>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         1. DATOS DE CONTACTO
+         ===================================================== -->
+    <section class="section" aria-labelledby="contacto-title">
+      <div class="container">
+
+        <h2 class="visually-hidden" id="contacto-title">Datos de contacto</h2>
+
+        <div class="contact-layout">
+
+          <!-- PISTA: cada tarjeta es un canal de contacto. Podés cambiar el
+               orden, sumar una red social o quitar la que no uses. -->
+          <div class="contact-cards">
+
+            <a class="contact-card" href="tel:+5491155555555">
+              <span class="contact-card__icon">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/>
+                </svg>
+              </span>
+              <span class="contact-card__label">Llamanos</span>
+              <span class="contact-card__value">11 5555-5555</span>
+              <span class="contact-card__text">Atención directa, sin menús ni esperas largas.</span>
+            </a>
+
+            <a class="contact-card" href="https://wa.me/5491155555555?text=Hola%2C%20quisiera%20consultar%20por%20los%20servicios%20de%20Salud%20a%20Domicilio.">
+              <span class="contact-card__icon">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12.04 2a9.9 9.9 0 0 0-8.42 15.13L2 22l4.99-1.58A9.9 9.9 0 1 0 12.04 2Zm0 1.8a8.1 8.1 0 1 1-4.16 15.05l-.34-.2-3.1.98.99-3.02-.22-.35A8.1 8.1 0 0 1 12.04 3.8Zm-3.1 3.7c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.87 1.21 3.07c.15.2 2.06 3.28 5.07 4.47 2.5.99 3.01.79 3.55.74.54-.05 1.75-.71 2-1.4.25-.69.25-1.28.17-1.4-.07-.12-.27-.2-.57-.35-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51h-.57Z"/>
+                </svg>
+              </span>
+              <span class="contact-card__label">WhatsApp</span>
+              <span class="contact-card__value">11 5555-5555</span>
+              <span class="contact-card__text">Escribinos y coordinamos la atención.</span>
+            </a>
+
+            <a class="contact-card" href="mailto:hola@saludadomicilio.com.ar">
+              <span class="contact-card__icon">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="5" width="18" height="14" rx="2"/>
+                  <path d="m3 7 9 6 9-6"/>
+                </svg>
+              </span>
+              <span class="contact-card__label">Correo</span>
+              <span class="contact-card__value">hola@saludadomicilio.com.ar</span>
+              <span class="contact-card__text">Consultas generales y documentación.</span>
+            </a>
+
+            <div class="contact-card">
+              <span class="contact-card__icon">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9"/>
+                  <path d="M12 7v5l3 2"/>
+                </svg>
+              </span>
+              <span class="contact-card__label">Horarios</span>
+              <span class="contact-card__value">8 a 20 h</span>
+              <span class="contact-card__text">Todos los días. Visitas y traslados programados.</span>
+            </div>
+
+          </div>
+
+          <!-- PISTA: este panel oscuro resume la forma de coordinar. Cambiá el
+               texto, la lista y los botones según tu forma de trabajo. -->
+          <aside class="contact-panel" aria-labelledby="panel-title">
+            <h2 id="panel-title">Coordinemos tu atención</h2>
+            <p>
+              Preferimos una charla breve para entender la necesidad y darte una
+              respuesta clara, sin formularios.
+            </p>
+            <ul class="check-list">
+              <li>Respondemos de 8 a 20 h, todos los días.</li>
+              <li>Confirmamos disponibilidad y presupuesto.</li>
+              <li>Coordinamos visitas y traslados programados.</li>
+            </ul>
+            <a class="btn btn--whatsapp btn--block" href="https://wa.me/5491155555555?text=Hola%2C%20quisiera%20coordinar%20una%20atenci%C3%B3n%20con%20Salud%20a%20Domicilio.">Escribir por WhatsApp</a>
+            <a class="btn btn--light btn--block" href="tel:+5491155555555">Llamar al 11 5555-5555</a>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         2. ZONAS DE ATENCIÓN
+         ===================================================== -->
+    <section class="section section--mint" aria-labelledby="zonas-title">
+      <div class="container">
+
+        <div class="section-head">
+          <!-- REEMPLAZAR: zonas de atención de ejemplo.
+               Sumá o quitá <li> en la lista .pill-list para ajustar la cobertura. -->
+          <p class="eyebrow">Dónde atendemos</p>
+          <h2 id="zonas-title">CABA y GBA Norte</h2>
+          <p>
+            Si estás dentro de la zona, coordinamos el día y el horario. Si estás
+            un poco más lejos, consultanos: evaluamos cada caso.
+          </p>
+        </div>
+
+        <ul class="pill-list">
+          <li>CABA</li>
+          <li>Vicente López</li>
+          <li>Olivos</li>
+          <li>Martínez</li>
+          <li>San Isidro</li>
+          <li>San Fernando</li>
+          <li>Tigre</li>
+        </ul>
+
+        <!-- PISTA: si cambiás los números de emergencia, actualizá también la
+             barra superior, el pie y las páginas de servicios y preguntas. -->
+        <div class="emergency-box">
+          <p>
+            <strong>¿Es una emergencia?</strong> No esperes una respuesta por
+            WhatsApp. Llamá al 107 (SAME) o al 911.
+          </p>
+          <a class="btn btn--outline" href="tel:107">Llamar al 107</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================
+         3. CÓMO AGILIZAR LA CONSULTA
+         ===================================================== -->
+    <section class="section" aria-labelledby="agilizar-title">
+      <div class="container">
+
+        <div class="section-head section-head--center">
+          <p class="eyebrow">Antes de escribirnos</p>
+          <h2 id="agilizar-title">Tres datos que nos ayudan</h2>
+          <p>
+            Con esta información podemos responderte más rápido y confirmar la
+            disponibilidad del servicio.
+          </p>
+        </div>
+
+        <!-- PISTA: estos tres datos ayudan a responder más rápido. Podés
+             reemplazarlos por los que necesites pedir en tu caso. -->
+        <div class="commitment">
+
+          <article class="commitment__item">
+            <h3>La zona</h3>
+            <p>
+              Contanos en qué barrio o localidad está el paciente. Así verificamos
+              la cobertura y los tiempos de traslado.
+            </p>
+          </article>
+
+          <article class="commitment__item">
+            <h3>La necesidad</h3>
+            <p>
+              Describí qué atención hace falta: una curación, un inyectable, control
+              de signos vitales o un traslado.
+            </p>
+          </article>
+
+          <article class="commitment__item">
+            <h3>La indicación</h3>
+            <p>
+              Si tenés receta o indicación médica, mencionalo al coordinar. Nos ayuda
+              a preparar la visita.
+            </p>
+          </article>
+
+        </div>
+
+        <!-- PISTA: este aviso de privacidad es orientativo; adaptalo a cómo
+             manejás realmente los datos de los pacientes. -->
+        <p class="note mt-2">
+          Por seguridad, no envíes estudios ni datos sensibles por mensaje. Los
+          detalles del paciente los coordinamos por teléfono.
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <!-- PISTA: podés cambiar los títulos de las columnas, sumar enlaces o quitar
+         una columna entera. Si agregás una página, acordate de enlazarla acá. -->
+    <div class="container footer-main">
+
+      <div class="footer-about">
+        <a class="brand brand--footer" href="index.html">
+          <img class="brand__mark" src="assets/logo.svg" width="44" height="44" alt="">
+          <span class="brand__text">
+            <strong>Salud a Domicilio</strong>
+            <span>Enfermería y traslados</span>
+          </span>
+        </a>
+        <p>
+          Enfermería a domicilio y traslados en ambulancia coordinados por un
+          enfermero matriculado. CABA y GBA Norte.
+        </p>
+        <p class="footer-emergency"><strong>Emergencias:</strong> llamá al 107.</p>
+      </div>
+
+      <div class="footer-col">
+        <h2 class="footer-title">Navegación</h2>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h2 class="footer-title">Servicios</h2>
+        <ul>
+          <li><a href="servicios.html#enfermeria">Enfermería a domicilio</a></li>
+          <li><a href="servicios.html#traslados">Traslados en ambulancia</a></li>
+          <li><a href="contacto.html">Zonas de atención</a></li>
+          <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
+        </ul>
+      </div>
+
+      <!-- REEMPLAZAR: teléfono, WhatsApp y correo de ejemplo -->
+      <div class="footer-col footer-contact">
+        <h2 class="footer-title">Contacto directo</h2>
+        <a class="footer-phone" href="tel:+5491155555555">11 5555-5555</a>
+        <a class="btn btn--whatsapp" href="https://wa.me/5491155555555?text=Hola%2C%20quisiera%20consultar%20por%20los%20servicios%20de%20Salud%20a%20Domicilio.">Escribinos por WhatsApp</a>
+        <p>Lunes a domingo<br>De 8 a 20 h</p>
+        <a class="footer-mail" href="mailto:hola@saludadomicilio.com.ar">hola@saludadomicilio.com.ar</a>
+      </div>
+
+    </div>
+
+    <!-- PISTA: actualizá el año y el nombre del sitio en el copyright. -->
+    <div class="container footer-bottom">
+      <p>© 2026 Salud a Domicilio. Todos los derechos reservados.</p>
+      <p>Sitio de ejemplo para el taller de programación web.</p>
+    </div>
+  </footer>
+
+  <!-- PISTA: si preferís un solo botón flotante, borrá uno de los dos enlaces.
+       En celulares los textos se ocultan solos y quedan solo los íconos. -->
+  <div class="floating-contact" aria-label="Contacto rápido">
+    <a class="float-btn float-btn--whatsapp" href="https://wa.me/5491155555555?text=Hola%2C%20quisiera%20consultar%20por%20los%20servicios%20de%20Salud%20a%20Domicilio." aria-label="Escribir por WhatsApp al 11 5555-5555">
+      <span class="float-btn__icon">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12.04 2a9.9 9.9 0 0 0-8.42 15.13L2 22l4.99-1.58A9.9 9.9 0 1 0 12.04 2Zm0 1.8a8.1 8.1 0 1 1-4.16 15.05l-.34-.2-3.1.98.99-3.02-.22-.35A8.1 8.1 0 0 1 12.04 3.8Zm-3.1 3.7c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.87 1.21 3.07c.15.2 2.06 3.28 5.07 4.47 2.5.99 3.01.79 3.55.74.54-.05 1.75-.71 2-1.4.25-.69.25-1.28.17-1.4-.07-.12-.27-.2-.57-.35-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51h-.57Z"/>
+        </svg>
+      </span>
+      <span class="float-btn__text">WhatsApp</span>
+    </a>
+
+    <a class="float-btn float-btn--phone" href="tel:+5491155555555" aria-label="Llamar al 11 5555-5555">
+      <span class="float-btn__icon">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/>
+        </svg>
+      </span>
+      <span class="float-btn__text">Llamar</span>
+    </a>
+  </div>
+
+</body>
+</html>

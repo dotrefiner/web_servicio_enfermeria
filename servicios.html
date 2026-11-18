@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Servicios de enfermería a domicilio y traslados en ambulancia: inyectables, curaciones, control de signos vitales y traslados programados.">
+  <meta name="theme-color" content="#1B76B4">
+  <title>Servicios | Salud a Domicilio</title>
+
+  <!-- PISTA: el <title> y la meta description de arriba son los que se ven en la
+       pestaña y en Google. Conviene adaptarlos en cada página. -->
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container header-bar">
+
+      <!-- PISTA: cambiá el nombre y la bajada de la marca. Repetilos igual en el pie.
+           El logo es assets/logo.svg: podés reemplazarlo por otro archivo. -->
+      <a class="brand" href="index.html">
+        <img class="brand__mark" src="assets/logo.svg" width="44" height="44" alt="">
+        <span class="brand__text">
+          <strong>Salud a Domicilio</strong>
+          <span>Enfermería y traslados</span>
+        </span>
+      </a>
+
+      <input class="nav-toggle" type="checkbox" id="menu-toggle">
+      <label class="nav-toggle-label" for="menu-toggle">
+        <span class="visually-hidden">Abrir o cerrar el menú</span>
+        <span class="nav-toggle-bars" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </label>
+
+      <nav class="nav-panel" aria-label="Menú principal">
+        <!-- PISTA: para sumar o quitar páginas, editá estos <li>. El atributo
+             aria-current="page" marca la página activa y se cambia en cada archivo. -->
+        <ul class="nav-list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="servicios.html" aria-current="page">Servicios</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+
+        <!-- REEMPLAZAR: teléfono y WhatsApp de ejemplo.
+             En WhatsApp el número va sin +, sin espacios y sin guiones (formato wa.me).
+             El texto después de ?text= es el mensaje que aparece ya escrito en el chat. -->
+        <div class="nav-actions">
+          <a class="nav-phone" href="tel:+5491155555555">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/>
+            </svg>
+            <span>11 5555-5555</span>
+          </a>
+          <a class="btn btn--whatsapp btn--sm" href="https://wa.me/5491155555555?text=Hola%2C%20quisiera%20consultar%20por%20los%20servicios%20de%20Salud%20a%20Domicilio.">WhatsApp</a>
+        </div>
+      </nav>
+
+      <a class="header-call" href="tel:+5491155555555" aria-label="Llamar al 11 5555-5555">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/>
+        </svg>
+      </a>
+
+    </div>
+  </header>
+
+  <!-- PISTA: si el sitio no es de Argentina, cambiá el 107 por el número local
+       de emergencias. También aparece en el pie y en las páginas de servicios y contacto. -->
+  <p class="emergency-bar"><strong>Emergencias:</strong> llamá al 107. Este sitio coordina servicios programados.</p>
+
+  <main id="contenido" tabindex="-1">
+
+    <!-- PISTA: el título y la bajada de esta portada se pueden adaptar al
+         servicio o zona que quieras destacar. -->
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="container page-hero__inner">
+        <p class="eyebrow">Servicios</p>
+        <h1 id="page-title">Enfermería a domicilio y traslados coordinados</h1>
+        <p>
+          Atención programada, con indicación médica cuando corresponde y
+          comunicación directa con la familia. Contanos qué necesitás y te
+          orientamos sin compromiso.
+        </p>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         1. ENFERMERÍA A DOMICILIO
+         ===================================================== -->
+    <section class="section" id="enfermeria" aria-labelledby="enfermeria-title">
+      <div class="container">
+
+        <!-- PISTA: reemplazá la foto y el texto de presentación del servicio.
+             La imagen se recorta sola con object-fit: cover. -->
+        <div class="split">
+
+          <div class="split__media">
+            <img src="assets/enfermeria.jpg" width="1400" height="933" alt="Enfermera acompañando a una persona mayor en su cama, en su domicilio">
+          </div>
+
+          <div class="split__content">
+            <p class="eyebrow">Atención en casa</p>
+            <h2 id="enfermeria-title">Enfermería a domicilio, con seguimiento</h2>
+            <p class="lead">
+              Coordinamos visitas puntuales o un acompañamiento más prolongado
+              según lo que necesite el paciente y su familia.
+            </p>
+            <p>
+              Cada atención se acuerda previamente: qué práctica se va a realizar,
+              en qué horario y con qué indicación médica. Después de la visita
+              registramos lo hecho y te contamos cómo sigue.
+            </p>
+            <ul class="check-list">
+              <li>Visitas programadas y puntuales</li>
+              <li>Comunicación directa con la familia</li>
+              <li>Registro de cada atención</li>
+              <li>Coordinación con el médico tratante cuando corresponde</li>
+            </ul>
+            <div class="cta-inline">
+              <a class="btn btn--whatsapp" href="https://wa.me/5491155555555?text=Hola%2C%20quisiera%20consultar%20por%20enfermer%C3%ADa%20a%20domicilio.">Consultar disponibilidad</a>
+              <a class="btn btn--outline" href="tel:+5491155555555">Llamar al 11 5555-5555</a>
+            </div>
+          </div>
+
+        </div>
+
+        <h3 class="subhead">Prácticas que coordinamos</h3>
+
+        <!-- PISTA: cada tarjeta es una práctica. Podés borrar las que no
+             ofrezcas o copiar una para sumar otra. Los números 01, 02...
+             son solo texto y hay que actualizarlos a mano. -->
+        <div class="service-grid">
+
+          <article class="service-item">
+            <span class="service-item__number">01</span>
+            <h3>Inyectables</h3>
+            <p>Aplicación intramuscular o subcutánea según indicación médica y receta.</p>
+          </article>
+
+          <article class="service-item">
+            <span class="service-item__number">02</span>
+            <h3>Curaciones</h3>
+            <p>Limpieza, control y vendaje de heridas simples o postoperatorias.</p>
+          </article>
+
+          <article class="service-item">
+            <span class="service-item__number">03</span>
+            <h3>Signos vitales</h3>
+            <p>Control de presión arterial, temperatura, pulso y saturación.</p>
+          </article>
+
+          <article class="service-item">
+            <span class="service-item__number">04</span>
+            <h3>Medicación</h3>
+            <p>Administración según prescripción, horarios y registro de cada toma.</p>
+          </article>
+
+          <article class="service-item">
+            <span class="service-item__number">05</span>
+            <h3>Acompañamiento</h3>
+            <p>Cuidado de personas mayores, postoperatorio y apoyo a la familia.</p>
+          </article>
+
+          <article class="service-item">
+            <span class="service-item__number">06</span>
+            <h3>Seguimiento</h3>
+            <p>Registro de la evolución y comunicación con el profesional tratante.</p>
+          </article>
+
+        </div>
+
+        <!-- PISTA: este aviso es importante para no prometer servicios de
+             urgencia. Adaptá el texto a las condiciones reales del servicio. -->
+        <div class="note mt-2">
+          <p>
+            <strong>Importante:</strong> los servicios se coordinan según indicación
+            médica, disponibilidad y evaluación del caso. No realizamos prácticas de
+            urgencia.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================
+         2. TRASLADOS EN AMBULANCIA
+         ===================================================== -->
+    <section class="section section--mint" id="traslados" aria-labelledby="traslados-title">
+      <div class="container">
+
+        <!-- PISTA: split--reverse invierte las columnas. Si quitás esa clase,
+             la imagen vuelve a la izquierda. -->
+        <div class="split split--reverse">
+
+          <div class="split__media">
+            <img src="assets/ambulancia.jpg" width="1400" height="933" alt="Paramédico junto a una ambulancia equipada" loading="lazy">
+          </div>
+
+          <div class="split__content">
+            <p class="eyebrow">Movilidad</p>
+            <h2 id="traslados-title">Traslados en ambulancia</h2>
+            <p class="lead">
+              Coordinamos traslados programados con ambulancia equipada y personal
+              capacitado. Ideal para consultas, estudios, diálisis y regreso a casa.
+            </p>
+            <p>
+              Nos ocupamos de la logística para que la familia pueda concentrarse
+              en acompañar al paciente: confirmamos horarios, punto de encuentro y
+              necesidad de acompañamiento.
+            </p>
+            <ul class="check-list">
+              <li>Traslados a consultas, estudios y diálisis</li>
+              <li>Ida y vuelta coordinada</li>
+              <li>Ambulancia con equipamiento básico</li>
+              <li>Acompañamiento de enfermería si se requiere</li>
+            </ul>
+            <div class="note">
+              <p>
+                <strong>No es un servicio de emergencias.</strong> Ante una urgencia,
+                llamá al 107 (SAME) o al 911.
+              </p>
+            </div>
+            <div class="cta-inline">
+              <a class="btn btn--whatsapp" href="https://wa.me/5491155555555?text=Hola%2C%20quisiera%20consultar%20por%20un%20traslado%20en%20ambulancia.">Consultar un traslado</a>
+              <a class="btn btn--outline" href="tel:+5491155555555">Llamar al 11 5555-5555</a>
+            </div>
+          </div>
+
+        </div>
+
+        <h3 class="subhead">Cómo coordinar un traslado</h3>
+
+        <!-- PISTA: podés cambiar estos tres pasos por los tuyos. Si agregás
+             uno, actualizá también el número del círculo. -->
+        <div class="steps">
+
+          <article class="step">
+            <span class="step__number">1</span>
+            <h3>Pedilo con anticipación</h3>
+            <p>
+              Contanos la fecha, el horario, el origen y el destino del traslado.
+            </p>
+          </article>
+
+          <article class="step">
+            <span class="step__number">2</span>
+            <h3>Confirmamos disponibilidad</h3>
+            <p>
+              Revisamos la ambulancia y el tipo de acompañamiento que necesita
+              el paciente.
+            </p>
+          </article>
+
+          <article class="step">
+            <span class="step__number">3</span>
+            <h3>Coordinamos la llegada</h3>
+            <p>
+              Acordamos el punto de encuentro, el horario y el regreso si hace falta.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================
+         3. LLAMADA FINAL
+         ===================================================== -->
+    <section class="section section--tight cta-band" aria-labelledby="cta-title">
+      <!-- PISTA: repetí este cierre en las otras páginas si cambiás el mensaje. -->
+      <div class="container cta-band__inner">
+        <div class="cta-band__content">
+          <p class="eyebrow">Presupuesto sin cargo</p>
+          <h2 id="cta-title">Contanos qué necesitás</h2>
+          <p>
+            Te orientamos sobre el servicio, la disponibilidad y los pasos a seguir.
+            Respondemos de 8 a 20 h.
+          </p>
+        </div>
+        <div class="cta-band__actions">
+          <a class="btn btn--whatsapp btn--lg" href="https://wa.me/5491155555555?text=Hola%2C%20quisiera%20consultar%20por%20los%20servicios%20de%20Salud%20a%20Domicilio.">Escribir por WhatsApp</a>
+          <a class="btn btn--light btn--lg" href="tel:+5491155555555">11 5555-5555</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <!-- PISTA: podés cambiar los títulos de las columnas, sumar enlaces o quitar
+         una columna entera. Si agregás una página, acordate de enlazarla acá. -->
+    <div class="container footer-main">
+
+      <div class="footer-about">
+        <a class="brand brand--footer" href="index.html">
+          <img class="brand__mark" src="assets/logo.svg" width="44" height="44" alt="">
+          <span class="brand__text">
+            <strong>Salud a Domicilio</strong>
+            <span>Enfermería y traslados</span>
+          </span>
+        </a>
+        <p>
+          Enfermería a domicilio y traslados en ambulancia coordinados por un
+          enfermero matriculado. CABA y GBA Norte.
+        </p>
+        <p class="footer-emergency"><strong>Emergencias:</strong> llamá al 107.</p>
+      </div>
+
+      <div class="footer-col">
+        <h2 class="footer-title">Navegación</h2>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h2 class="footer-title">Servicios</h2>
+        <ul>
+          <li><a href="servicios.html#enfermeria">Enfermería a domicilio</a></li>
+          <li><a href="servicios.html#traslados">Traslados en ambulancia</a></li>
+          <li><a href="contacto.html">Zonas de atención</a></li>
+          <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
+        </ul>
+      </div>
+
+      <!-- REEMPLAZAR: teléfono, WhatsApp y correo de ejemplo -->
+      <div class="footer-col footer-contact">
+        <h2 class="footer-title">Contacto directo</h2>
+        <a class="footer-phone" href="tel:+5491155555555">11 5555-5555</a>
+        <a class="btn btn--whatsapp" href="https://wa.me/5491155555555?text=Hola%2C%20quisiera%20consultar%20por%20los%20servicios%20de%20Salud%20a%20Domicilio.">Escribinos por WhatsApp</a>
+        <p>Lunes a domingo<br>De 8 a 20 h</p>
+        <a class="footer-mail" href="mailto:hola@saludadomicilio.com.ar">hola@saludadomicilio.com.ar</a>
+      </div>
+
+    </div>
+
+    <!-- PISTA: actualizá el año y el nombre del sitio en el copyright. -->
+    <div class="container footer-bottom">
+      <p>© 2026 Salud a Domicilio. Todos los derechos reservados.</p>
+      <p>Sitio de ejemplo para el taller de programación web.</p>
+    </div>
+  </footer>
+
+  <!-- PISTA: si preferís un solo botón flotante, borrá uno de los dos enlaces.
+       En celulares los textos se ocultan solos y quedan solo los íconos. -->
+  <div class="floating-contact" aria-label="Contacto rápido">
+    <a class="float-btn float-btn--whatsapp" href="https://wa.me/5491155555555?text=Hola%2C%20quisiera%20consultar%20por%20los%20servicios%20de%20Salud%20a%20Domicilio." aria-label="Escribir por WhatsApp al 11 5555-5555">
+      <span class="float-btn__icon">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12.04 2a9.9 9.9 0 0 0-8.42 15.13L2 22l4.99-1.58A9.9 9.9 0 1 0 12.04 2Zm0 1.8a8.1 8.1 0 1 1-4.16 15.05l-.34-.2-3.1.98.99-3.02-.22-.35A8.1 8.1 0 0 1 12.04 3.8Zm-3.1 3.7c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.87 1.21 3.07c.15.2 2.06 3.28 5.07 4.47 2.5.99 3.01.79 3.55.74.54-.05 1.75-.71 2-1.4.25-.69.25-1.28.17-1.4-.07-.12-.27-.2-.57-.35-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51h-.57Z"/>
+        </svg>
+      </span>
+      <span class="float-btn__text">WhatsApp</span>
+    </a>
+
+    <a class="float-btn float-btn--phone" href="tel:+5491155555555" aria-label="Llamar al 11 5555-5555">
+      <span class="float-btn__icon">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/>
+        </svg>
+      </span>
+      <span class="float-btn__text">Llamar</span>
+    </a>
+  </div>
+
+</body>
+</html>
